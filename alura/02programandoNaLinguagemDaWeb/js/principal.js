@@ -52,3 +52,10 @@ for(var i = 0; i< pacientes.length; i++) {
         tdImc.textContent = imc.toFixed(2); //O "toFixed" vai reduzir as casas decimais para 2.
     }
 }
+
+// ADICIONANDO FUNCIONALIDADE DO FORMULÁRIO DO HTML:
+var botaoAdicionar = document.querySelector("#adicionar-paciente");
+botaoAdicionar.addEventListener("click", function(event) {
+    event.preventDefault();
+    console.log("Fui clicado!");
+});

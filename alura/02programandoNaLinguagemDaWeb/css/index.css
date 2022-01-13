@@ -1,6 +1,6 @@
 *{
 	box-sizing: border-box;
- }
+}
 
 body{
 	font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
@@ -135,4 +135,8 @@ button[disabled=disabled], button:disabled {
 
 .paciente-invalido {
 	background-color: lightcoral;
+}
+
+#titulo-form {
+	margin-top: 5vh;
 }
