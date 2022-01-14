@@ -48,46 +48,14 @@ for(var i = 0; i< pacientes.length; i++) {
     }
 
     if(pesoValido && alturaValida) {
-        var imc = peso / (altura * altura);
-        tdImc.textContent = imc.toFixed(2); //O "toFixed" vai reduzir as casas decimais para 2.
+        var imc = calculaImc(peso, altura)
+        tdImc.textContent = imc; 
     }
 }
 
-// ADICIONANDO FUNCIONALIDADE DO FORMULÁRIO DO HTML:
-var botaoAdicionar = document.querySelector("#adicionar-paciente");
-botaoAdicionar.addEventListener("click", function(event) {
-    event.preventDefault(); //bloqueia o comportamento padrão do botão
-    
-    var form = document.querySelector("#form-adiciona"); //pega o form do HTML
-
-    // ACESSANDO OS INPUTS DO FORM PELO ATRIBUTO "name" (form.[ATRIBUTO NAME].value):
-        //usa-se ".value" para pegar o valor digitado dentro do input.
-    var nome = form.nome.value; 
-    var peso = form.peso.value;
-    var altura = form.altura.value;
-    var gordura = form.gordura.value;
-
-    //CRIANDO UM ELEMENTO NO HTML PELO JS (tr e td's):
-    var pacienteTr = document.createElement("tr");
-    var nomeTd = document.createElement("td");
-    var pesoTd = document.createElement("td");
-    var alturaTd = document.createElement("td");
-    var gorduraTd = document.createElement("td");
-    var imcTd = document.createElement("td");
-
-    //COLOCANDO OS VALORES DENTRO DAS TD:
-    nomeTd.textContent = nome;
-    pesoTd.textContent = peso;
-    alturaTd.textContent = altura;
-    gorduraTd.textContent =gordura;
-
-    //DEFININDO AS TD COMO ELEMENTOS-FILHOS DA TR:
-    pacienteTr.appendChild(nomeTd);
-    pacienteTr.appendChild(pesoTd);
-    pacienteTr.appendChild(alturaTd);
-    pacienteTr.appendChild(gorduraTd);
-
-    //ATRIBUINDO A TR COMO ELEMENTO-FILHO DA TABELA
-    var tabela = document.querySelector("#tabela-pacientes");
-    tabela.appendChild(pacienteTr);
-});
+function calculaImc(peso, altura) {
+    var imc = 0
+    imc = peso / (altura * altura);
+    return imc.toFixed(2);
+    //O "toFixed" vai reduzir as casas decimais para 2.
+}
