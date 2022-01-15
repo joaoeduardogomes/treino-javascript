@@ -26,10 +26,11 @@ for(var i = 0; i< pacientes.length; i++) {
     var tdImc = paciente.querySelector(".info-imc");
 
     //validando os dados:
-    var pesoValido = true;
-    var alturaValida = true;
+    var pesoValido = validaPeso(peso);
+    var alturaValida = validaAltura(altura);
 
-    if (peso <= 0 || peso >= 1000) {
+    if (!pesoValido) {
+        //"!pesoValido" é o mesmo que "pesoValido == false". O "!" é uma negação.
         console.log("Peso inválido");
         tdImc.textContent = "Peso inválido!";
         pesoValido = false;
@@ -38,7 +39,7 @@ for(var i = 0; i< pacientes.length; i++) {
         paciente.classList.add("paciente-invalido");
     }
 
-    if (altura <= 0 || altura >= 3) {
+    if (!alturaValida) {
         console.log("Altura inválida");
         tdImc.textContent = "Altura inválida!";
         alturaValida = false;
@@ -58,4 +59,52 @@ function calculaImc(peso, altura) {
     imc = peso / (altura * altura);
     return imc.toFixed(2);
     //O "toFixed" vai reduzir as casas decimais para 2.
+}
+
+function validaPeso(peso) {
+    if(peso > 0 && peso < 1000) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function validaAltura(altura) {
+    if (altura > 0 && altura <= 3.00) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function validaPaciente(paciente) {
+    var erros = [];
+
+    if (paciente.nome.length == 0) {
+        erros.push("Nome do paciente não informado")
+    }
+
+    if(paciente.gordura.length == 0) {
+        erros.push("Gordura do paciente não informada")
+    }
+
+    if(paciente.peso.length == 0) {
+        erros.push("Peso do paciente não informado")
+    }
+
+    if(paciente.altura.length == 0) {
+        erros.push("Altura do paciente não informada")
+    }
+
+    if(!validaPeso(paciente.peso)) {
+        erros.push("O peso informado é inválido")
+    }
+
+    if(!validaAltura(paciente.altura)) {
+        erros.push("A altura informada é inválida")
+    }
+
+    return erros;
 }

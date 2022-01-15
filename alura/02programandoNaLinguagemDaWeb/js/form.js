@@ -10,12 +10,21 @@ botaoAdicionar.addEventListener("click", function(event) {
     //CRIANDO UM ELEMENTO NO HTML PELO JS (tr):
     var pacienteTr = montaTr(paciente);
 
+    // VERIFICAÇÃO DE ERROS NOS DADOS INSERIDOS
+    var erros = validaPaciente(paciente);
+    if(erros.length > 0) {
+    exibeMensagensDeErro(erros);
+    return;
+    }
+
     //ATRIBUINDO A TR COMO ELEMENTO-FILHO DA TABELA
     var tabela = document.querySelector("#tabela-pacientes");
-
     tabela.appendChild(pacienteTr);
 
     form.reset(); //limpa o formulário após cada cadastro de paciente
+
+    var mensagensErro = document.querySelector("#mensagens-erro");
+    mensagensErro.innerHTML = "";
 });
 
 
@@ -53,4 +62,15 @@ function montaTr(paciente) {
     pacienteTr.appendChild(montaTd(paciente.imc, "info-imc"));
 
     return pacienteTr;
+}
+
+function exibeMensagensDeErro(erros) {
+    var ul = document.querySelector("#mensagens-erro");
+    ul.innerHTML = ""; //limpa as mensagens de erro para atualizá-las ao invés de somá-las.
+
+    erros.forEach(function(erro) {
+        var li = document.createElement("li");
+        li.textContent= erro;
+        ul.appendChild(li);
+    });
 }
