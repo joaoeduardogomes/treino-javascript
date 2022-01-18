@@ -141,7 +141,7 @@ button[disabled=disabled], button:disabled {
 	margin-top: 5vh;
 }
 
-#mensagens-erro{
+#mensagens-erro, #erro-ajax{
 	color: red;
 }
 

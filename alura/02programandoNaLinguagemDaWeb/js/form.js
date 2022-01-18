@@ -7,8 +7,7 @@ botaoAdicionar.addEventListener("click", function(event) {
 
     var paciente = obtemPacienteDoFormulario(form); //aqui criamos um objeto
     
-    //CRIANDO UM ELEMENTO NO HTML PELO JS (tr):
-    var pacienteTr = montaTr(paciente);
+
 
     // VERIFICAÇÃO DE ERROS NOS DADOS INSERIDOS
     var erros = validaPaciente(paciente);
@@ -17,9 +16,7 @@ botaoAdicionar.addEventListener("click", function(event) {
     return;
     }
 
-    //ATRIBUINDO A TR COMO ELEMENTO-FILHO DA TABELA
-    var tabela = document.querySelector("#tabela-pacientes");
-    tabela.appendChild(pacienteTr);
+    adicionaPacienteNaTabela(paciente);
 
     form.reset(); //limpa o formulário após cada cadastro de paciente
 
@@ -73,4 +70,12 @@ function exibeMensagensDeErro(erros) {
         li.textContent= erro;
         ul.appendChild(li);
     });
+}
+
+function adicionaPacienteNaTabela(paciente) {
+    //CRIANDO UM ELEMENTO NO HTML PELO JS (tr):
+    var pacienteTr = montaTr(paciente);
+    //ATRIBUINDO A TR COMO ELEMENTO-FILHO DA TABELA
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
 }
