@@ -19,13 +19,11 @@ contaCorrenteCaio.cliente = cliente1;
 contaCorrenteCaio.depositar(500);
 
 const conta2 = new ContaCorrente();
-conta2.cliente = new Cliente();
-conta2.cliente.nome = "Ana";
-conta2.cliente.cpf = 1889954496;
+conta2.cliente = cliente1;
 conta2.agencia = 102;
 
 console.log(contaCorrenteCaio);
 console.log(conta2)
 
 contaCorrenteCaio.transferir(200, conta2);
-console.log(conta2);
+console.log(conta2.saldo);
