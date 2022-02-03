@@ -1,6 +1,8 @@
 import {Cliente} from "./Cliente.js";
 import {ContaCorrente} from "./ContaCorrente.js";
 import {ContaPoupanca} from "./ContaPoupanca.js";
+import {Conta} from "./Conta.js";
+import {ContaSalario} from "./ContaSalario.js";
 
 const cliente1 = new Cliente("Caio", 11122233309);
 
@@ -15,3 +17,13 @@ contaPoupanca.sacar(15);
 
 console.log(contaPoupanca);
 console.log(contaCorrenteRicardo);
+
+//obj do tipo Conta:
+//const conta = new Conta(0, cliente1, 5151);
+//console.log(conta)
+
+//Conta salário:
+const contaSalario = new ContaSalario(cliente1);
+contaSalario.depositar(100);
+contaSalario.sacar(10);
+console.log(contaSalario)
